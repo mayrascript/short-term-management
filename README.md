@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Short-Term Rental Management
 
-## Getting Started
+App full-stack para gestión de rentas a corto plazo.
 
-First, run the development server:
+## Requisitos previos
+
+- **Node.js** (v18+)
+- **MongoDB** corriendo localmente (puerto 27017 por defecto) o una URI de conexión remota
+
+## Instalación
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Dependencias del root (Next.js boilerplate)
+npm install
+
+# Dependencias del backend
+cd backend
+npm install
+
+# Dependencias del frontend
+cd ../frontend
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configuración
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Crea el archivo de variables de entorno para el backend:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cp backend/.env.example backend/.env
+```
 
-## Learn More
+Edita `backend/.env` si necesitas cambiar el puerto o la URI de MongoDB.
 
-To learn more about Next.js, take a look at the following resources:
+## Correr el proyecto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Necesitas dos terminales:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Terminal 1 — Backend (Express + MongoDB)**
+```bash
+cd backend
+npm run dev
+```
 
-## Deploy on Vercel
+**Terminal 2 — Frontend (Vite + React)**
+```bash
+cd frontend
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El backend corre en `http://localhost:5001` y el frontend en `http://localhost:5173`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Estructura del proyecto
+
+```
+├── backend/          # API Express + TypeScript + Mongoose
+│   └── src/
+├── frontend/         # Vite + React
+│   └── src/
+├── app/              # Next.js (boilerplate, no se usa activamente)
+└── package.json      # Root (Next.js)
+```

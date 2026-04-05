@@ -36,16 +36,39 @@ export const Post = mongoose.model<IPost>('Post', PostSchema);
 export interface IExpense extends Document {
   description: string;
   amount: number;
-  category: 'cleaning' | 'maintenance' | 'supplies' | 'other';
+  category: string;
+  comment?: string;
+  tags: string[];
+  currency: 'COP' | 'USD';
+  receiptUrl?: string;
   date: Date;
+  isDeleted: boolean;
+  deletedAt?: Date;
 }
 const ExpenseSchema = new Schema<IExpense>({
   description: { type: String, required: true },
   amount: { type: Number, required: true },
-  category: { type: String, enum: ['cleaning', 'maintenance', 'supplies', 'other'], required: true },
-  date: { type: Date, default: Date.now }
+  category: { type: String, required: true, trim: true },
+  comment: { type: String, trim: true },
+  tags: { type: [String], default: [] },
+  currency: { type: String, enum: ['COP', 'USD'], required: true, default: 'COP' },
+  receiptUrl: { type: String, trim: true },
+  date: { type: Date, default: Date.now },
+  isDeleted: { type: Boolean, default: false },
+  deletedAt: { type: Date }
 }, { timestamps: true });
 export const Expense = mongoose.model<IExpense>('Expense', ExpenseSchema);
+
+// Expense Category
+export interface IExpenseCategory extends Document {
+  name: string;
+  slug: string;
+}
+const ExpenseCategorySchema = new Schema<IExpenseCategory>({
+  name: { type: String, required: true, trim: true },
+  slug: { type: String, required: true, trim: true, unique: true }
+}, { timestamps: true });
+export const ExpenseCategory = mongoose.model<IExpenseCategory>('ExpenseCategory', ExpenseCategorySchema);
 
 // Task
 export interface ITask extends Document {

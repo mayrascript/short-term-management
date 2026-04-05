@@ -1,0 +1,41 @@
+erDiagram
+    RESERVATION {
+        ObjectId _id PK
+        string guestName
+        Date checkIn
+        Date checkOut
+        number revenue
+        enum status "upcoming | active | completed"
+        Date createdAt
+        Date updatedAt
+    }
+
+    POST {
+        ObjectId _id PK
+        string idea
+        string platform
+        enum status "idea | planned | published"
+        Date scheduledDate
+        Date createdAt
+        Date updatedAt
+    }
+
+    EXPENSE {
+        ObjectId _id PK
+        string description
+        number amount
+        enum category "cleaning | maintenance | supplies | other"
+        Date date
+        Date createdAt
+        Date updatedAt
+    }
+
+    TASK {
+        ObjectId _id PK
+        string title
+        string description
+        enum category "maintenance | fix | improvement"
+        enum status "pending | in_progress | completed"
+        Date createdAt
+        Date updatedAt
+    }

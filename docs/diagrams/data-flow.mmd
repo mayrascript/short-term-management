@@ -1,0 +1,22 @@
+sequenceDiagram
+    actor User
+    participant React as Finance.tsx
+    participant Axios as api.ts (Axios)
+    participant Express as Express Backend
+    participant MongoDB as MongoDB
+
+    User->>React: Fill expense form<br/>(description, amount, date, category)
+    React->>Axios: POST /api/expenses
+    Axios->>Express: HTTP POST /api/expenses
+    Express->>MongoDB: Expense.create(data)
+    MongoDB-->>Express: Saved document
+    Express-->>Axios: 201 JSON response
+    Axios-->>React: Response data
+
+    React->>Axios: GET /api/expenses
+    Axios->>Express: HTTP GET /api/expenses
+    Express->>MongoDB: Expense.find()
+    MongoDB-->>Express: Expense documents
+    Express-->>Axios: 200 JSON array
+    Axios-->>React: Expenses list
+    React-->>User: Render updated expense ledger

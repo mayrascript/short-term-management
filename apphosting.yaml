@@ -1,0 +1,14 @@
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  maxInstances: 2
+  minInstances: 0
+
+env:
+  - variable: FIREBASE_PROJECT_ID
+    value: dorado-suites-admin
+  - variable: GOOGLE_CLOUD_PROJECT
+    value: dorado-suites-admin
+  - variable: GCLOUD_PROJECT
+    value: dorado-suites-admin
+

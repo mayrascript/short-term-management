@@ -1,62 +1,69 @@
 # Short-Term Rental Management
 
-App full-stack para gestión de rentas a corto plazo.
+App full-stack para gestión de rentas a corto plazo usando **Next.js + Firestore**.
+
+## Stack actual
+
+- Frontend + backend: **Next.js App Router** (`src/app`)
+- Base de datos: **Cloud Firestore** (Firebase Admin SDK en route handlers)
+- Deploy objetivo: **Firebase App Hosting**
 
 ## Requisitos previos
 
-- **Node.js** (v18+)
-- **MongoDB** corriendo localmente (puerto 27017 por defecto) o una URI de conexión remota
+- **Node.js** (v20+ recomendado)
+- Proyecto Firebase activo (ej: `dorado-suites-admin`)
+- Credenciales para Firestore en entorno local:
+  - `FIREBASE_PROJECT_ID` (o `GCLOUD_PROJECT` / `GOOGLE_CLOUD_PROJECT`)
+  - opcionalmente `FIREBASE_CLIENT_EMAIL` + `FIREBASE_PRIVATE_KEY`
 
 ## Instalación
 
 ```bash
-# Dependencias del root (Next.js boilerplate)
-npm install
-
-# Dependencias del backend
-cd backend
-npm install
-
-# Dependencias del frontend
-cd ../frontend
-npm install
+pnpm install
 ```
 
-## Configuración
-
-Crea el archivo de variables de entorno para el backend:
+## Desarrollo local
 
 ```bash
-cp backend/.env.example backend/.env
+pnpm dev
 ```
 
-Edita `backend/.env` si necesitas cambiar el puerto o la URI de MongoDB.
+La app corre en `http://localhost:3000`.
 
-## Correr el proyecto
+## Build local
 
-Necesitas dos terminales:
-
-**Terminal 1 — Backend (Express + MongoDB)**
 ```bash
-cd backend
-npm run dev
+pnpm build
+pnpm start
 ```
 
-**Terminal 2 — Frontend (Vite + React)**
+## Firebase App Hosting
+
+Archivos relevantes:
+
+- `firebase.json`
+- `.firebaserc`
+- `apphosting.yaml`
+- `firestore.rules`
+- `firestore.indexes.json`
+
+Comandos típicos:
+
 ```bash
-cd frontend
-npm run dev
+pnpm firebase login
+pnpm firebase use dorado-suites-admin
+pnpm firebase deploy --only firestore
+pnpm firebase apphosting:backends:deploy short-term-management-backend --project dorado-suites-admin
 ```
-
-El backend corre en `http://localhost:5001` y el frontend en `http://localhost:5173`.
 
 ## Estructura del proyecto
 
 ```
-├── backend/          # API Express + TypeScript + Mongoose
-│   └── src/
-├── frontend/         # Vite + React
-│   └── src/
-├── app/              # Next.js (boilerplate, no se usa activamente)
-└── package.json      # Root (Next.js)
+├── src/app/             # Next.js App Router (UI + API routes)
+├── src/lib/             # Firebase admin y utilidades compartidas
+├── backend/             # Legacy Express + MongoDB (referencia)
+├── frontend/            # Legacy Vite + React (referencia)
+├── firebase.json
+├── apphosting.yaml
+└── firestore.rules
 ```

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Calendar, DollarSign } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { apiRequest } from "@/lib/clientApi";
 import type { Reservation } from "@/lib/types";
 
@@ -30,6 +31,9 @@ export default function DashboardPage() {
       <div className="page-header">
         <h1 className="page-title">Overview</h1>
         <p className="page-subtitle">Welcome back! Here&apos;s what&apos;s happening with your property.</p>
+        <div style={{ marginTop: "16px" }}>
+          <Button>Shadcn ready</Button>
+        </div>
       </div>
 
       <div className="grid-cards">
@@ -112,4 +116,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

@@ -1,0 +1,57 @@
+erDiagram
+    RESERVATIONS {
+        string _id
+        string guestName
+        timestamp checkIn
+        timestamp checkOut
+        number revenue
+        string status
+        timestamp createdAt
+        timestamp updatedAt
+    }
+
+    POSTS {
+        string _id
+        string idea
+        string platform
+        string status
+        timestamp scheduledDate
+        timestamp createdAt
+        timestamp updatedAt
+    }
+
+    TASKS {
+        string _id
+        string title
+        string description
+        string category
+        string status
+        timestamp createdAt
+        timestamp updatedAt
+    }
+
+    EXPENSE_CATEGORIES {
+        string _id
+        string name
+        string slug
+        timestamp createdAt
+        timestamp updatedAt
+    }
+
+    EXPENSES {
+        string _id
+        string description
+        number amount
+        string category
+        string currency
+        string comment
+        string[] tags
+        string receiptUrl
+        timestamp date
+        boolean isDeleted
+        timestamp deletedAt
+        timestamp createdAt
+        timestamp updatedAt
+    }
+
+    EXPENSE_CATEGORIES ||..o{ EXPENSES : "relacion logica por name/category"

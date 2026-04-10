@@ -1,0 +1,42 @@
+flowchart TB
+    subgraph API["Superficie API activa"]
+        A1["GET, POST /api/reservations"]
+        A2["GET, POST /api/posts"]
+        A3["PUT /api/posts/[id]"]
+        A4["GET, POST /api/tasks"]
+        A5["PUT /api/tasks/[id]"]
+        A6["GET, POST /api/expense-categories"]
+        A7["GET, POST /api/expenses"]
+        A8["PUT, DELETE /api/expenses/[id]"]
+        A9["PATCH /api/expenses/[id]/restore"]
+    end
+
+    subgraph Collections["Colecciones Firestore"]
+        C1[("reservations")]
+        C2[("posts")]
+        C3[("tasks")]
+        C4[("expenseCategories")]
+        C5[("expenses")]
+    end
+
+    A1 --> C1
+    A2 --> C2
+    A3 --> C2
+    A4 --> C3
+    A5 --> C3
+    A6 --> C4
+    A7 --> C5
+    A8 --> C5
+    A9 --> C5
+
+    SoftDelete["Soft-delete en expenses:
+    isDeleted = true|false
+    deletedAt = timestamp|null"] -. aplica a .-> C5
+
+    Filters["Filtros en GET /api/expenses:
+    startDate
+    endDate
+    includeDeleted"] -. consultan .-> A7
+
+    Indexes["Índices compuestos:
+    isDeleted + date ASC/DESC"] -. optimizan .-> C5

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "diagrams:check": "./scripts/check-diagrams.sh",
+    "ui:check": "./scripts/check-ui-guidelines.sh",
+    "firestore:check": "./scripts/check-firestore-guidelines.sh"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -1,0 +1,70 @@
+sequenceDiagram
+    actor U as Usuario
+    participant P as Finance page
+    participant A as apiRequest
+    participant E as /api/expenses
+    participant EI as /api/expenses/[id]
+    participant ER as /api/expenses/[id]/restore
+    participant SU as serverUtils
+    participant DB as Firestore expenses
+
+    U->>P: Abre /finance
+    P->>A: GET /expenses?startDate&endDate
+    A->>E: fetch /api/expenses
+    E->>DB: where isDeleted == false\norderBy date desc\nfiltra start/end si existen
+    DB-->>E: documentos expense
+    E-->>A: lista serializada
+    A-->>P: expenses[]
+    P-->>U: render tabla y totales
+
+    U->>P: Crea gasto
+    P->>A: POST /expenses
+    A->>E: body JSON
+    E->>SU: buildExpensePayload()
+    SU-->>E: payload validado
+    E->>DB: add expense + timestamps + isDeleted=false
+    DB-->>E: documento creado
+    E-->>A: expense 201
+    A-->>P: respuesta creada
+    P->>A: GET /expenses
+    A->>E: refetch lista
+    E->>DB: query vigente
+    DB-->>E: lista actualizada
+    E-->>P: expenses[]
+
+    U->>P: Edita gasto
+    P->>A: PUT /expenses/[id]
+    A->>EI: body JSON
+    EI->>SU: buildExpensePayload()
+    SU-->>EI: payload validado
+    EI->>DB: get doc por id
+    DB-->>EI: documento existente
+    EI->>DB: update payload + updatedAt
+    DB-->>EI: documento actualizado
+    EI-->>A: expense actualizado
+    A-->>P: respuesta actualizada
+
+    U->>P: Envía a papelera
+    P->>A: DELETE /expenses/[id]
+    A->>EI: delete lógico
+    EI->>DB: get doc por id
+    DB-->>EI: documento existente
+    EI->>DB: update isDeleted=true\ndeletedAt=now\nupdatedAt=now
+    DB-->>EI: documento actualizado
+    EI-->>P: expense en papelera
+
+    U->>P: Activa vista trash
+    P->>A: GET /expenses?includeDeleted=true
+    A->>E: fetch trash
+    E->>DB: where isDeleted == true
+    DB-->>E: documentos en papelera
+    E-->>P: expenses[]
+
+    U->>P: Restaura gasto
+    P->>A: PATCH /expenses/[id]/restore
+    A->>ER: restore
+    ER->>DB: get doc por id
+    DB-->>ER: documento con isDeleted=true
+    ER->>DB: update isDeleted=false\ndeletedAt=null\nupdatedAt=now
+    DB-->>ER: documento restaurado
+    ER-->>P: expense restaurado

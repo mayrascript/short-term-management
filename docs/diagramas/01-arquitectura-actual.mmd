@@ -1,0 +1,64 @@
+flowchart LR
+    U["Usuario"]
+
+    subgraph AH["Firebase App Hosting"]
+        subgraph APP["Next.js 16 App Router"]
+            subgraph UI["Páginas cliente del dashboard"]
+                D["/ (overview)"]
+                F["/finance"]
+                S["/social"]
+                T["/tasks"]
+                Shell["DashboardShell"]
+            end
+
+            APIClient["apiRequest() / src/lib/clientApi.ts"]
+
+            subgraph Routes["Route handlers / src/app/api"]
+                R1["/api/reservations"]
+                R2["/api/posts + /api/posts/[id]"]
+                R3["/api/tasks + /api/tasks/[id]"]
+                R4["/api/expense-categories"]
+                R5["/api/expenses + /api/expenses/[id] + /restore"]
+            end
+
+            Admin["firebaseAdmin.ts"]
+            Utils["serverUtils.ts"]
+        end
+    end
+
+    FS[("Cloud Firestore")]
+    IDX["firestore.indexes.json"]
+    RULES["firestore.rules"]
+
+    U --> Shell
+    Shell --> D
+    Shell --> F
+    Shell --> S
+    Shell --> T
+
+    D --> APIClient
+    F --> APIClient
+    S --> APIClient
+    T --> APIClient
+
+    APIClient --> R1
+    APIClient --> R2
+    APIClient --> R3
+    APIClient --> R4
+    APIClient --> R5
+
+    R1 --> Admin
+    R2 --> Admin
+    R3 --> Admin
+    R4 --> Admin
+    R5 --> Admin
+
+    R1 --> Utils
+    R2 --> Utils
+    R3 --> Utils
+    R4 --> Utils
+    R5 --> Utils
+
+    Admin --> FS
+    IDX -. soporta consultas .-> FS
+    RULES -. control de acceso actual .-> FS

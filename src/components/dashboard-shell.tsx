@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building, CheckSquare, DollarSign, Home, Share2 } from "lucide-react";
+import { Building, CheckSquare, DollarSign, Home, Share2, Users } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Dashboard", icon: Home },
   { href: "/social", label: "Social", icon: Share2 },
   { href: "/finance", label: "Finance", icon: DollarSign },
   { href: "/tasks", label: "Tasks", icon: CheckSquare },
+  { href: "/guests", label: "Guests", icon: Users },
 ];
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {

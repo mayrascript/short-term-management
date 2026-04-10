@@ -37,6 +37,16 @@ export interface ExpenseCategory {
   updatedAt?: string;
 }
 
+export interface Guest {
+  _id: string;
+  name: string;
+  email?: string;
+  phone?: string;
+  notes?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 export interface Expense {
   _id: string;
   description: string;

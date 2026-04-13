@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "skills": {
+    "diagram-generator": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills/diagram-generator",
+      "sourceType": "local",
+      "computedHash": "1c40e2c6c2df10f358f60b0aa46f2f354aaed065f2ed1e2dc9c3ef78ecf4ada3"
+    },
+    "diagram-precommit": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "f2a988a946333055d0c4c44eb4fd990b52a56bb120d4f40a965e4ea08050a615"
+    },
+    "firebase-app-hosting-basics": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "7f0e0330510b4e6b06bcede472cebb183a491b8a0098f92d7563454c40d78050"
+    },
+    "firebase-basics": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "97e5107e2eb84b20572e848102e5f97bd596ac69a2c4aafccda6ba99fadb3bbc"
+    },
+    "firebase-firestore-standard": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "ab2332607f40ae408e9c56e177b02fad55e071bfac4c2035a16ce0787768953e"
+    },
+    "firestore-guidelines": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "3428c22b43d6027bbbf5d1ec80509c6494cd638a3758d66b4354bc1a7b8663af"
+    },
+    "firestore-rules-testing": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "25befb08078fe8f74a59a3af598f1674609d93574ca8724f8e55b5f62e5a1b5e"
+    },
+    "firestore-security-rules-auditor": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "8b797ed45d9d171b3a88f4980d72fc4accd1257206c555f4935599f9b9fd7d28"
+    },
+    "frontend-design": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
+    },
+    "interface-design": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "d004c5e5e2e7132e1d64e9c2a339db7f7aaa69053a5c19cddc210dd35dd6fff5"
+    },
+    "next-best-practices": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "515ba75178bd44875812d9a560bdf14651f86709f89cf1d4f209638e879807f3"
+    },
+    "playwright-e2e-testing": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "b3ef2029fc577118f138532d7d19efda5634e50b44fee54279357a7787da81a3"
+    },
+    "shadcn": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "873c67922d80775a9fdf596db7964b579f0408c30ec6e3d11989f6055bbec89f"
+    },
+    "test-discipline": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "e6c2a4c6726a187ac21677354d39a36645e7d5254b4c74be8b55fc3c8f7b13dc"
+    },
+    "ui-guidelines": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "8ce411a72cafc9cbecd5fcba85a624f74b2fe1eed336ebc8a9eb19374ef07d95"
+    },
+    "vercel-react-best-practices": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "1be892a3ea68b74654326ef836a58dd528d99ae0ab8d879764e2519c39068e67"
+    },
+    "vitest-unit-testing": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "de9f620e60f1f721ee151bd1fd81c9c837d45b1a64f21a146f37589dea39f2df"
+    },
+    "web-design-guidelines": {
+      "source": "/Users/mayrarodriguez/Personal/short-term-management/skills",
+      "sourceType": "local",
+      "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a"
+    }
+  }
+}

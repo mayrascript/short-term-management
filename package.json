@@ -13,7 +13,7 @@
     "test:e2e": "playwright test",
     "test:all": "pnpm test && pnpm test:rules && pnpm test:e2e",
     "check-tests": "node scripts/check-tests.mjs --staged",
-    "skills:install": "skills experimental_install",
+    "skills:install": "skills add ./skills --skill '*' -a claude-code -a codex -a cursor -a antigravity -y --copy",
     "skills:add": "skills add",
     "skills:check": "node scripts/check-skills.mjs",
     "sync-skills": "pnpm skills:install",

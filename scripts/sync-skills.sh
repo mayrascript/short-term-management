@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-# Deprecated: this script now delegates to the Vercel skills CLI.
+# Deprecated: delegates to the Vercel skills CLI via the `skills:*` scripts.
 #
 # Source of truth: ./skills/ + skills-lock.json
-# Targets (generated): .claude/skills/ (Claude Code) and .agents/skills/
-#   (shared by Codex, Cursor, Antigravity).
+# Targets (committed copies): .claude/skills/ (Claude Code) and
+#   .agents/skills/ (shared by Codex, Cursor, Antigravity).
 #
 # Usage:
-#   bash scripts/sync-skills.sh          → materialize targets from lockfile
-#   bash scripts/sync-skills.sh --check  → fail if targets drift from lockfile
+#   bash scripts/sync-skills.sh          → regenerate target copies from ./skills/
+#   bash scripts/sync-skills.sh --check  → fail if targets drift from ./skills/
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 if [ "${1:-}" = "--check" ]; then
-  exec node scripts/check-skills.mjs
+  exec pnpm skills:check
 fi
 
-exec pnpm exec skills experimental_install -y
+exec pnpm skills:install

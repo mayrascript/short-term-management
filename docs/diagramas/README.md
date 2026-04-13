@@ -25,5 +25,7 @@ Fuera de alcance para este set:
 Notas:
 
 - Los diagramas están escritos como fuente Mermaid (`.mmd`) para facilitar revisión y versionado.
-- No se incluyen SVG en esta primera versión.
+- Los SVG renderizados sí se incluyen y se versionan en `docs/diagramas/svg/`.
+- `docs/diagramas/*.mmd` es la fuente editable; `docs/diagramas/svg/*.svg` es el artefacto generado.
+- Para regenerarlos, usa `./scripts/check-diagrams.sh` o `npm run diagrams:check`.
 - Las relaciones representadas reflejan la arquitectura actual observada en `src/` y la configuración Firebase del repo.

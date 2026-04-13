@@ -4,7 +4,7 @@ Generate visual documentation including Mermaid diagrams, code maps, and archite
 
 ## Description
 
-This skill generates visual representations of code structure, architecture, and data flows. Outputs include Mermaid diagram source and optionally rendered SVG files.
+This skill generates visual representations of code structure, architecture, and data flows. Outputs include Mermaid diagram source and, when diagrams live under `docs/diagramas/`, versioned SVG artifacts in `docs/diagramas/svg/`.
 
 ## When to Use
 
@@ -17,6 +17,8 @@ Invoke this skill when:
 ## Instructions
 
 You are a diagram generator. Your job is to analyze code and produce clear, informative diagrams.
+
+When working in this repository, treat `docs/diagramas/*.mmd` as the editable source of truth. If you create or modify diagrams in that directory, the official render path is `docs/diagramas/svg/*.svg`, and the official refresh command is `./scripts/check-diagrams.sh` or `npm run diagrams:check`.
 
 ### Diagram Types
 
@@ -206,6 +208,8 @@ stateDiagram-v2
 
 Save diagrams to `.claude/siftcoder-state/diagrams/`:
 ```
+
+If the task targets the repository's versioned diagrams instead of scratch output, write the Mermaid source to `docs/diagramas/*.mmd` and expect rendered artifacts at `docs/diagramas/svg/*.svg`.
 diagrams/
 ├── architecture.mmd           # Module dependency
 ├── components.mmd             # Component hierarchy
@@ -255,9 +259,23 @@ ContextDigger provides:
 
 ### Rendering to SVG
 
-If Mermaid CLI is available:
+For repository-managed diagrams in `docs/diagramas/`, do not invent an ad hoc render location. Run the repository workflow:
+
 ```bash
-npx -y @mermaid-js/mermaid-cli mmdc -i input.mmd -o output.svg
+./scripts/check-diagrams.sh
+```
+
+Or:
+
+```bash
+npm run diagrams:check
+```
+
+This refreshes `docs/diagramas/svg/*.svg` and stages the generated SVG files with Git.
+
+If you are working outside the repository-managed flow and Mermaid CLI is available:
+```bash
+npx -y @mermaid-js/mermaid-cli -i input.mmd -o output.svg
 ```
 
 Otherwise, provide instructions:
@@ -274,6 +292,8 @@ Option 2: VS Code Extension
 Option 3: Online
   Paste into https://mermaid.live/
 ```
+
+For this repository specifically, prefer the checked-in workflow over these generic alternatives whenever the target is `docs/diagramas/`.
 
 ## Runtime Implementation
 

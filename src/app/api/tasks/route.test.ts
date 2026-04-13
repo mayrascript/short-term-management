@@ -2,10 +2,14 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Wire up in-memory doubles BEFORE importing the route module so the
 // module-scope `db.collection("tasks")` call resolves against our mock.
-const get = vi.fn();
-const orderBy = vi.fn(() => ({ get }));
-const add = vi.fn();
-const collection = vi.fn(() => ({ orderBy, add }));
+// vi.hoisted lets the factory below access these before the test file body runs.
+const { get, orderBy, add, collection } = vi.hoisted(() => {
+  const get = vi.fn();
+  const orderBy = vi.fn(() => ({ get }));
+  const add = vi.fn();
+  const collection = vi.fn(() => ({ orderBy, add }));
+  return { get, orderBy, add, collection };
+});
 
 vi.mock("@/lib/firebaseAdmin", () => ({
   db: { collection },

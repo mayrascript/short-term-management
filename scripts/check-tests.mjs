@@ -50,7 +50,9 @@ const HARD_EXCLUDE = [
   // Skill/docs/hook infra:
   /^\.claude\//,
   /^\.codex\//,
+  /^\.agents\//,
   /^\.husky\//,
+  /^skills\//,
   /^scripts\//,
   /^public\//,
 ];

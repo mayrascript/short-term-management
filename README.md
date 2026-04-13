@@ -51,6 +51,18 @@ pnpm test:all     # ejecuta los tres
 
 Emergencia (solo humanos): `git commit --no-verify`. Abre follow-up inmediato para agregar el test.
 
+## Agent Skills
+
+Los skills (test-discipline, vitest, next-best-practices, shadcn, etc.) se instalan con el [Vercel skills CLI](https://skills.sh/) y se sincronizan entre Claude Code, Codex, Cursor y Antigravity. Regla y workflow completos en `AGENTS.md` → *Skills — CLI y sincronización*.
+
+```bash
+pnpm skills:add <source>   # instalar un skill (local o externo)
+pnpm skills:install        # regenerar .claude/skills/ y .agents/skills/
+pnpm skills:check          # verificar drift (lo hace también el pre-commit)
+```
+
+Fuente de verdad: `skills/`. Copias generadas (committed): `.claude/skills/`, `.agents/skills/`. Lockfile: `skills-lock.json`.
+
 ## Firebase App Hosting
 
 Archivos relevantes:

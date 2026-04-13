@@ -78,6 +78,8 @@ Skills instalados:
 - `next-best-practices` desde `vercel-labs/next-skills`
 - `vercel-react-best-practices` desde `vercel-labs/agent-skills` (origen del skill: `react-best-practices`)
 - `web-design-guidelines` desde `vercel-labs/agent-skills`
+- `frontend-design` desde `anthropics/skills`
+- `interface-design` desde `dammyjay93/interface-design`
 - `shadcn` desde `shadcn/ui` (corresponde al skill oficial documentado en `https://ui.shadcn.com/docs/skills`)
 - `diagram-generator` desde `ialameh/sift-coder` (fijado al commit publicado por MCP Market: `63f56f5ad66224ddde1eb88a85d4d0323f6a80a2`)
 - `diagram-precommit` como skill local del proyecto para validar Mermaid y regenerar SVG antes de commit

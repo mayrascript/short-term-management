@@ -1,0 +1,34 @@
+{
+  "audits": [
+    {
+      "timestamp": "2026-04-13T00:00:00Z",
+      "phase": "untagged",
+      "project": "short-term-management",
+      "weighted_score": 52,
+      "grade": "F",
+      "dimensions": {
+        "functional": { "score": 38, "grade": "F", "key_finding": "Zero tests and ~20 silent `catch {}` blocks swallowing API errors" },
+        "visual": { "score": 64, "grade": "D", "key_finding": "180 inline style={{}} usages across 10 files bypass the Tailwind/shadcn design system" },
+        "reusability": { "score": 33, "grade": "F", "key_finding": "Legacy frontend/ + backend/ trees duplicate the entire Next.js app in src/; 11 API routes repeat identical serialization boilerplate" },
+        "readability": { "score": 63, "grade": "D", "key_finding": "Four files exceed 300 lines; dual source trees hurt navigability" },
+        "velocity": { "score": 70, "source": "neutral" }
+      },
+      "token_data": { "available": false, "tokens_per_feature": 0, "tokens_per_iteration": 0 }
+    },
+    {
+      "timestamp": "2026-04-13T00:05:00Z",
+      "phase": "untagged",
+      "project": "short-term-management",
+      "weighted_score": 52,
+      "grade": "F",
+      "dimensions": {
+        "functional": { "score": 38, "grade": "F", "key_finding": "Zero tests and ~20 silent catch blocks swallowing API errors" },
+        "visual": { "score": 64, "grade": "D", "key_finding": "180 inline style usages bypass Tailwind/shadcn design system" },
+        "reusability": { "score": 33, "grade": "F", "key_finding": "Legacy frontend/ + backend/ duplicate the Next.js app; 11 API routes repeat boilerplate" },
+        "readability": { "score": 63, "grade": "D", "key_finding": "Four files >300 lines; dual source trees" },
+        "velocity": { "score": 70, "source": "neutral" }
+      },
+      "token_data": { "available": false, "tokens_per_feature": 0, "tokens_per_iteration": 0 }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+# Files grandfathered as of 2026-04-13. Editing these does NOT require a
+# matching test yet — but adding one is strongly encouraged and will improve
+# the /cq-audit score. When you add a test for an entry here, delete the line.
+#
+# layout.tsx, loading.tsx, error.tsx, not-found.tsx and CSS are already
+# excluded globally via HARD_EXCLUDE in scripts/check-tests.mjs — they don't
+# need to be listed here.
+#
+# Rules of this file:
+#   - one path per line, repo-relative
+#   - trailing slash = directory (all files under it are ignored)
+#   - '#' starts a comment
+#   - blank lines are fine
+
+# --- Existing pages (to be covered with smoke render tests) ---
+src/app/(dashboard)/finance/page.tsx
+src/app/(dashboard)/guests/page.tsx
+src/app/(dashboard)/page.tsx
+src/app/(dashboard)/social/page.tsx
+src/app/(dashboard)/tasks/page.tsx
+
+# --- Existing API routes (seed test added for tasks; others still grandfathered) ---
+src/app/api/expense-categories/route.ts
+src/app/api/expenses/[id]/restore/route.ts
+src/app/api/expenses/[id]/route.ts
+src/app/api/expenses/route.ts
+src/app/api/guests/[id]/route.ts
+src/app/api/guests/route.ts
+src/app/api/posts/[id]/route.ts
+src/app/api/posts/route.ts
+src/app/api/reservations/route.ts
+src/app/api/tasks/[id]/route.ts
+
+# --- Existing libs (seed test added for clientApi; others grandfathered) ---
+src/lib/firebaseAdmin.ts
+src/lib/serverUtils.ts
+src/lib/types.ts
+src/lib/utils.ts
+
+# --- Existing components (seed test added for button; others grandfathered) ---
+src/components/dashboard-shell.tsx
+
+# Legacy trees scheduled for deletion (also excluded in HARD_EXCLUDE).
+frontend/
+backend/

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Rule 1 — every staged feature file must ship with a matching test.
+node scripts/check-tests.mjs --staged || exit 1
+
+# Rule 2 — tests must pass before the commit lands.
+# Uses --run to ensure single-pass (no watch). --changed skips files that are
+# untouched in this commit.
+pnpm exec vitest --run --changed HEAD || exit 1

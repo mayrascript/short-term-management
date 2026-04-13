@@ -37,6 +37,20 @@ pnpm build
 pnpm start
 ```
 
+## Tests
+
+Cada feature nueva debe incluir su test (reglas en `.claude/skills/test-discipline/` y hooks en `.husky/pre-commit` + `.claude/hooks/require-tests.sh`).
+
+```bash
+pnpm test         # Vitest: componentes, libs, route handlers
+pnpm test:watch   # modo watch durante desarrollo
+pnpm test:rules   # firestore.rules contra el emulador (requiere Java)
+pnpm test:e2e     # Playwright e2e (primera vez: pnpm exec playwright install chromium)
+pnpm test:all     # ejecuta los tres
+```
+
+Emergencia (solo humanos): `git commit --no-verify`. Abre follow-up inmediato para agregar el test.
+
 ## Firebase App Hosting
 
 Archivos relevantes:
